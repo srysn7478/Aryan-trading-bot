@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Forex Trading Board</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1220;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        header {
+            background: #111b2e;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #9ca9bd;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: #111b2e;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #1e2b43;
+        }
+
+        .pair {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .green {
+            color: #22c55e;
+        }
+
+        .red {
+            color: #ef4444;
+        }
+
+        .section {
+            background: #111b2e;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #26344d;
+        }
+
+        th {
+            color: #9ca9bd;
+        }
+
+        .signal {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .buy {
+            background: #123d28;
+            color: #22c55e;
+        }
+
+        .sell {
+            background: #451b20;
+            color: #ef4444;
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #2b3b56;
+            border-radius: 8px;
+            background: #0b1220;
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #riskResult {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #22c55e;
+        }
+
+        footer {
+            text-align: center;
+            color: #6b7890;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 23px;
+            }
+
+            th,
+            td {
+                padding: 9px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>📊 Forex Trading Board</h1>
+        <p>Market Watch • Trade Analysis • Risk Management</p>
+    </header>
+
+    <!-- Market Cards -->
+    <div class="cards">
+
+        <div class="card">
+            <div class="pair">EUR/USD</div>
+            <div class="price">1.0842</div>
+            <div class="green">▲ +0.32%</div>
+        </div>
+
+        <div class="card">
+            <div class="pair">GBP/USD</div>
+            <div class="price">1.2715</div>
+            <div class="red">▼ -0.18%</div>
+        </div>
+
+        <div class="card">
+            <div class="pair">USD/JPY</div>
+            <div class="price">149.82</div>
+            <div class="green">▲ +0.21%</div>
+        </div>
+
+        <div class="card">
+            <div class="pair">XAU/USD</div>
+            <div class="price">2,315.40</div>
+            <div class="green">▲ +0.55%</div>
+        </div>
+
+    </div>
+
+    <!-- Watchlist -->
+    <div class="section">
+
+        <h2>📈 Market Watch</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Pair</th>
+                    <th>Price</th>
+                    <th>Change</th>
+                    <th>Signal</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>EUR/USD</td>
+                    <td>1.0842</td>
+                    <td class="green">+0.32%</td>
+                    <td>
+                        <span class="signal buy">BUY</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>GBP/USD</td>
+                    <td>1.2715</td>
+                    <td class="red">-0.18%</td>
+                    <td>
+                        <span class="signal sell">SELL</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>USD/JPY</td>
+                    <td>149.82</td>
+                    <td class="green">+0.21%</td>
+                    <td>
+                        <span class="signal buy">BUY</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>XAU/USD</td>
+                    <td>2315.40</td>
+                    <td class="green">+0.55%</td>
+                    <td>
+                        <span class="signal buy">BUY</span>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Trade Setup -->
+    <div class="section">
+
+        <h2>🎯 Trade Setup</h2>
+
+        <div class="calculator">
+
+            <div>
+                <label>Currency Pair</label>
+                <select>
+                    <option>EUR/USD</option>
+                    <option>GBP/USD</option>
+                    <option>USD/JPY</option>
+                    <option>XAU/USD</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Entry Price</label>
+                <input type="number" id="entry" placeholder="Entry">
+            </div>
+
+            <div>
+                <label>Stop Loss</label>
+                <input type="number" id="stop" placeholder="Stop Loss">
+            </div>
+
+            <div>
+                <label>Take Profit</label>
+                <input type="number" id="take" placeholder="Take Profit">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Risk Calculator -->
+    <div class="section">
+
+        <h2>🛡️ Risk Calculator</h2>
+
+        <div class="calculator">
+
+            <div>
+                <label>Account Balance</label>
+                <input type="number" id="balance" placeholder="1000">
+            </div>
+
+            <div>
+                <label>Risk %</label>
+                <input type="number" id="risk" placeholder="1">
+            </div>
+
+        </div>
+
+        <button onclick="calculateRisk()">Calculate Risk</button>
+
+        <div id="riskResult"></div>
+
+    </div>
+
+    <footer>
+        Forex Trading Board • For analysis and educational use
+    </footer>
+
+</div>
+
+<script>
+
+function calculateRisk() {
+
+    let balance = Number(document.getElementById("balance").value);
+    let risk = Number(document.getElementById("risk").value);
+
+    if (!balance || !risk) {
+        document.getElementById("riskResult").innerText =
+            "Please enter balance and risk percentage.";
+        return;
+    }
+
+    let riskAmount = balance * (risk / 100);
+
+    document.getElementById("riskResult").innerText =
+        "Maximum Risk Amount: $" + riskAmount.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>
